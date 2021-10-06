@@ -1,6 +1,6 @@
 # gerador-pix-qrcode
 
-rota => /pix 
+rota => /pix /n
 json exemplo => {
 	"key": "00000000000",
 	"key_type": "CPF",
