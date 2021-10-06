@@ -56,17 +56,17 @@ app.post('/pix', (req, res) => {
 
 app.post('/qrcode', (req, res) => {
     var { data } = req.body
-    data.toString()
-    if (data) {
+    if (!data) {
+        res.status(422);
+        res.json({ error: "Nenhum dado foi enviado" });
+    } else {
+        data.toString();
+
         QRCode.toDataURL(data, { width: QR_CODE_SIZE, height: QR_CODE_SIZE }, function (err, url) {
             res.json(url);
         })
     }
 
-    else {
-        res.status(422);
-
-    }
 });
 
 app.listen(port, () => {
